@@ -1,0 +1,45 @@
+[System]
+Name='fuzzyCon'
+Type='mamdani'
+Version=2.0
+NumInputs=2
+NumOutputs=1
+NumRules=7
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='input1'
+Range=[-80 80]
+NumMFs=3
+MF1='negative':'zmf',[-40 0]
+MF2='zero':'trimf',[-40 0 40]
+MF3='positive':'smf',[-0 44]
+
+[Input2]
+Name='input2'
+Range=[-5 5]
+NumMFs=3
+MF1='Decreasing':'zmf',[-1.8 -0.2]
+MF2='Stationary':'trimf',[-2.5 0 2.5]
+MF3='Increasing':'smf',[0.2 1.8]
+
+[Output1]
+Name='output1'
+Range=[-25 25]
+NumMFs=3
+MF1='mf1':'trapmf',[-25 -22.3 -10.6481481481481 -0.5]
+MF2='mf2':'trimf',[-2 0 2]
+MF3='mf3':'trapmf',[0.5 11.1772486772487 21 25]
+
+[Rules]
+1 0, 1 (1) : 1
+2 0, 2 (1) : 1
+3 0, 3 (1) : 1
+3 3, 3 (1) : 1
+3 1, 1 (1) : 1
+1 1, 1 (1) : 1
+1 3, 3 (1) : 1
